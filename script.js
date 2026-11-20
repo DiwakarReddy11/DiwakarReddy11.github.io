@@ -88,7 +88,7 @@
     <div class="hero-stats reveal" style="--d:.7s">
       ${list(P.stats).map((s) => `<div class="hero-stat"><strong>${countHTML(s)}</strong><span>${s.label || ""}</span></div>`).join("")}
     </div>`;
-  $(".hero-stats").style.gridTemplateColumns = `repeat(${Math.min(list(P.stats).length || 1, 4)}, 1fr)`;
+  $(".hero-stats").style.setProperty("--cols", Math.min(list(P.stats).length || 1, 4));
 
   // About
   const A = C.about || {};

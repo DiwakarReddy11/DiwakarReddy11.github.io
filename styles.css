@@ -185,7 +185,7 @@ section { position: relative; }
   color: var(--muted); transition: color 0.3s, border-color 0.3s, transform 0.3s var(--ease);
 }
 .social:hover { color: var(--text); border-color: rgba(255,255,255,0.35); transform: translateY(-3px); }
-.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 80px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.hero-stats { display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr); gap: 1px; margin-top: 80px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .hero-stat { background: rgba(8, 11, 17, 0.85); padding: 24px 26px; backdrop-filter: blur(6px); }
 .hero-stat strong { display: block; font-family: var(--display); font-size: 34px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
 .hero-stat > span { font-size: 13.5px; color: var(--muted); }

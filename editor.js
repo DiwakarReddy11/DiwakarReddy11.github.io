@@ -408,7 +408,8 @@
         h("summary", {}, "More"),
         h("div", { class: "ed-more-menu" },
           h("button", { type: "button", class: "ed-btn ghost", html: ic("upload") + " Import content.js", onclick: importFile }),
-          h("button", { type: "button", class: "ed-btn ghost danger", html: ic("refresh") + " Discard draft", onclick: discard }))),
+          h("button", { type: "button", class: "ed-btn ghost danger", html: ic("refresh") + " Discard draft", onclick: discard }),
+          h("button", { type: "button", class: "ed-btn ghost", html: ic("eye") + " Hide edit button on this device", onclick: forgetDevice }))),
       h("p", { class: "ed-help", html: "<b>Save &amp; preview</b> keeps changes in this browser only. To publish, <b>Download content.js</b> and replace the file of the same name in your site folder." }));
     panel.append(head, tabs, body, foot);
     document.body.append(panel);
@@ -529,8 +530,19 @@ window.CONTENT = ${JSON.stringify(obj, null, 2)};
   const params = new URLSearchParams(location.search);
   const wantEdit = params.has("edit") || location.hash === "#edit" || sessionStorage.getItem("pf-edit") === "1";
 
+  const OWNER_KEY = "pf-owner";
+  const isOwnerDevice = () => { try { return localStorage.getItem(OWNER_KEY) === "1"; } catch { return false; } };
+  function forgetDevice() {
+    if (!confirm("Hide the edit button on this device? You can bring it back any time by opening the site with ?edit at the end of the address, or with the pencil icon in the footer.")) return;
+    try { localStorage.removeItem(OWNER_KEY); } catch { /* ignore */ }
+    dirty = false;
+    exitEditMode();
+  }
+
   function enterEditMode() {
     sessionStorage.setItem("pf-edit", "1");
+    // Remember this device so the edit button shows on every visit from now on
+    try { localStorage.setItem(OWNER_KEY, "1"); } catch { /* storage blocked */ }
     document.body.classList.add("edit-mode");
     // Floating button
     const fab = h("button", { type: "button", class: "ed-fab", html: ic("edit") + " Edit site" });
@@ -569,6 +581,13 @@ window.CONTENT = ${JSON.stringify(obj, null, 2)};
   }
 
   if (wantEdit) enterEditMode();
+  else if (isOwnerDevice()) {
+    // A small shortcut only on devices where the editor has been used before (never shown to visitors)
+    const url = new URL(location.href);
+    url.searchParams.set("edit", "");
+    const owner = h("a", { class: "ed-owner", href: url.toString().replace("edit=", "edit"), title: "Open the site editor", html: ic("edit") + " Edit" });
+    document.body.append(owner);
+  }
   document.addEventListener("keydown", (e) => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "e") {
       e.preventDefault();
