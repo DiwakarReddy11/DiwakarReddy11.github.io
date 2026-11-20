@@ -431,7 +431,12 @@ section { position: relative; }
 .toast { position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 20px); padding: 12px 20px; border-radius: 12px; background: var(--text); color: var(--bg); font-size: 14px; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.4s var(--ease); z-index: 300; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--dim); font-size: 13.5px; }
-footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+.footer-right { display: inline-flex; align-items: center; gap: 14px; }
+.footer-edit { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; color: var(--dim); border: 1px solid transparent; transition: color 0.3s, border-color 0.3s; }
+.footer-edit:hover { color: var(--accent); border-color: var(--line-2); }
+.footer-edit .icon { width: 14px; height: 14px; }
+.edit-mode .footer-edit { display: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
   <link rel="stylesheet" href="editor.css?v=3" />
 </head>
 <body class="loading">
@@ -73,7 +73,10 @@
   <footer>
     <div class="container">
       <span>© <span id="year"></span> <span id="footer-name"></span>. Built by hand with HTML, CSS and JavaScript.</span>
-      <span class="mono" id="footer-loc"></span>
+      <span class="footer-right">
+        <span class="mono" id="footer-loc"></span>
+        <a class="footer-edit" href="?edit" title="Edit site" aria-label="Edit site"><svg class="icon" viewBox="0 0 24 24"><use href="#i-edit"/></svg></a>
+      </span>
     </div>
   </footer>
 
