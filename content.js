@@ -149,7 +149,7 @@ window.CONTENT = {
       "location": "Warangal, Telangana",
       "years": "2019 – 2023",
       "scoreLabel": "CGPA",
-      "score": 9.0,
+      "score": 9,
       "scoreMax": 10,
       "logo": "",
       "details": "Graduated with a CGPA of 9.0 out of 10."
@@ -286,7 +286,7 @@ window.CONTENT = {
         "LangGraph",
         "LangChain",
         "Groq gpt-oss-120b / 20b",
-        "Chroma",
+        "ChromaDB",
         "fastembed",
         "Llama Prompt Guard 2",
         "Pydantic",
@@ -396,12 +396,9 @@ window.CONTENT = {
       "stack": [
         "Python 3.11",
         "MCP (Streamable HTTP)",
-        "yfinance",
         "uv",
         "pytest",
-        "ruff",
-        "Docker (multi-stage, non-root)",
-        "Render"
+        "Docker"
       ],
       "image": "",
       "imageCaption": "",
@@ -590,7 +587,6 @@ window.CONTENT = {
         "FastAPI",
         "Pydantic Settings",
         "BEIR (SciFact)",
-        "httpx",
         "RAGAS",
         "pytest"
       ],
@@ -900,8 +896,7 @@ window.CONTENT = {
         "Git",
         "VS Code",
         "uv",
-        "pytest",
-        "ruff"
+        "pytest"
       ]
     }
   ],
