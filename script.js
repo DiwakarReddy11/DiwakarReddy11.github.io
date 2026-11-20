@@ -6,10 +6,12 @@
      ========================================================= */
   const DRAFT_KEY = "portfolio-content-draft-v1";
   const BASE = window.CONTENT;
+  // Editor drafts are only shown in edit mode. Normal visits always show the published content.js.
+  const inEditMode = new URLSearchParams(location.search).has("edit") || location.hash === "#edit" || sessionStorage.getItem("pf-edit") === "1";
   let draft = null;
   try { const raw = localStorage.getItem(DRAFT_KEY); if (raw) draft = JSON.parse(raw); } catch (e) { /* storage unavailable */ }
-  const C = draft || BASE;
-  window.SITE = { content: C, base: BASE, isDraft: !!draft, DRAFT_KEY };
+  const C = (inEditMode && draft) || BASE;
+  window.SITE = { content: C, base: BASE, isDraft: !!(inEditMode && draft), hasDraft: !!draft, DRAFT_KEY };
 
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
