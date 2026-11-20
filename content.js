@@ -160,11 +160,11 @@ window.CONTENT = {
       "school": "Montessori High School",
       "location": "Alampur, Jogulamba Gadwal District, Telangana",
       "years": "",
-      "scoreLabel": "",
-      "score": null,
+      "scoreLabel": "GPA",
+      "score": 9.8,
       "scoreMax": 10,
       "logo": "",
-      "details": ""
+      "details": "Graduated with a GPA of 9.8 out of 10."
     }
   ],
   "projects": [
